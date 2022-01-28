@@ -1,13 +1,16 @@
+import au.com.origin.snapshots.Expect
+import au.com.origin.snapshots.junit5.SnapshotExtension
+import models.PetPojo
 import org.hamcrest.Matchers.containsString
 import org.junit.jupiter.api.Test
-import org.assertj.core.api.SoftAssertions
+import org.junit.jupiter.api.extension.ExtendWith
 import services.PetService
-import models.PetPojo
-import models.TagsItem
-import models.Category
 
+
+@ExtendWith(SnapshotExtension::class)
 class PetTests {
     private val petService = PetService()
+    private lateinit var expect: Expect
 
     @Test
     fun getPetByValidId() {
@@ -15,14 +18,7 @@ class PetTests {
         response.then().statusCode(200)
         val petPojo: PetPojo = response.`as`(PetPojo::class.java)
 
-        val softly = SoftAssertions()
-        softly.assertThat(petPojo.id).isEqualTo(1)
-        softly.assertThat(petPojo.category).isEqualTo(Category(2,"Cats"))
-        softly.assertThat(petPojo.name).isEqualTo("Cat 1")
-        softly.assertThat(petPojo.photoUrls).isEqualTo(mutableListOf("url1","url2"))
-        softly.assertThat(petPojo.tags).isEqualTo(mutableListOf(TagsItem(1,"tag1"), TagsItem(2,"tag2")))
-        softly.assertThat(petPojo.status).isEqualTo("available")
-        softly.assertAll()
+        expect.serializer("json").toMatchSnapshot(petPojo)
     }
 
     @Test
