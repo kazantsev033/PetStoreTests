@@ -16,7 +16,7 @@ class PetTests {
     fun getPetByValidId() {
         val response = petService.getPetById("1")
         response.then().statusCode(200)
-        val petPojo: PetPojo = response.`as`(PetPojo::class.java)
+        val petPojo = response.`as`(PetPojo::class.java)
 
         expect.serializer("json").toMatchSnapshot(petPojo)
     }
