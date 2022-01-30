@@ -1,10 +1,12 @@
 package models
 
+import Exclude
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import java.util.*
 
 @JsonIgnoreProperties(value = ["id"], allowSetters = true)
 data class PetPojo (
+	@Exclude
 	val id: Int = 0,
 	val category: Category? = null,
 	val name: String = "",
