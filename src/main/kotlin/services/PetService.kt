@@ -3,7 +3,7 @@ package services
 import io.restassured.RestAssured.*
 import io.restassured.response.Response
 
-class PetService : RestService() {
+class PetService(baseUrl: String) : RestService(baseUrl) {
     override var basePath:String = "pet/"
 
     fun getPetById(id:String):Response{

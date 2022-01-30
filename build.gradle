@@ -31,6 +31,10 @@ dependencies {
     testImplementation 'io.github.origin-energy:java-snapshot-testing-core:3.2.6'
     testImplementation 'io.github.origin-energy:java-snapshot-testing-junit5:3.2.6'
     testImplementation 'io.github.origin-energy:java-snapshot-testing-plugin-jackson:3.2.6'
+
+    //Testcontainers
+    testImplementation "org.testcontainers:testcontainers:1.16.3"
+    testImplementation "org.testcontainers:junit-jupiter:1.16.3"
 }
 
 test {

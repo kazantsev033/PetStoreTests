@@ -3,13 +3,14 @@ import au.com.origin.snapshots.junit5.SnapshotExtension
 import org.hamcrest.Matchers.containsString
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
+import org.testcontainers.junit.jupiter.Testcontainers
 import models.PetPojo
 import services.PetService
 
-
+@Testcontainers
 @ExtendWith(SnapshotExtension::class)
-class PetTests {
-    private val petService = PetService()
+class PetTests: AbstractTests() {
+    private val petService = PetService(baseUrl)
     private lateinit var expect: Expect
 
     @Test
