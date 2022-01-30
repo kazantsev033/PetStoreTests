@@ -41,7 +41,7 @@ class PetTests: AbstractTests() {
     fun postValidPet(json:JsonObject){
         petService.postPet(json).then().statusCode(200)
         val responsePet = petService.getPetById(json["id"].toString()).`as`(PetPojo::class.java)
-        
+
         expect.serializer("json").scenario(responsePet.name).toMatchSnapshot(responsePet)
     }
 }
