@@ -5,10 +5,11 @@ import io.restassured.builder.RequestSpecBuilder
 import io.restassured.specification.RequestSpecification
 
 abstract class RestService (baseUrl:String) {
-    abstract var basePath:String
+    abstract val basePath:String
     val requestSpecification:RequestSpecification = RequestSpecBuilder()
         .setBaseUri(baseUrl)
         .addHeader("accept","application/json")
+        .addHeader("Content-Type", "application/json")
         .addFilter(SwaggerCoverageRestAssured())
         .build()
 }

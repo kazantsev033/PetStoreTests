@@ -3,11 +3,13 @@ import au.com.origin.snapshots.junit5.SnapshotExtension
 import org.hamcrest.Matchers.containsString
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-import org.testcontainers.junit.jupiter.Testcontainers
+import net.joshka.junit.json.params.JsonFileSource
+import org.junit.jupiter.api.TestInfo
+import org.junit.jupiter.params.ParameterizedTest
+import javax.json.JsonObject
 import models.PetPojo
 import services.PetService
 
-@Testcontainers
 @ExtendWith(SnapshotExtension::class)
 class PetTests: AbstractTests() {
     private val petService = PetService(baseUrl)
@@ -33,5 +35,15 @@ class PetTests: AbstractTests() {
     fun getPetByInvalidId() {
         val response = petService.getPetById("test")
         response.then().statusCode(400)
+    }
+
+    @ParameterizedTest
+    @JsonFileSource(resources = ["testdata/pet/validPets.json"])
+    fun postValidPet(json:JsonObject,testInfo: TestInfo){
+        petService.postPet(json).then().statusCode(200)
+        val responsePet = petService.getPetById(json["id"].toString()).`as`(PetPojo::class.java)
+
+
+        expect.serializer("json").scenario("${responsePet.name}").toMatchSnapshot(responsePet)
     }
 }

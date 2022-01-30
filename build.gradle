@@ -35,6 +35,10 @@ dependencies {
     //Testcontainers
     testImplementation "org.testcontainers:testcontainers:1.16.3"
     testImplementation "org.testcontainers:junit-jupiter:1.16.3"
+
+    // junit-json-params
+    implementation 'net.joshka:junit-json-params:5.6.2-r0'
+    implementation 'org.glassfish:javax.json:1.1.4'
 }
 
 test {

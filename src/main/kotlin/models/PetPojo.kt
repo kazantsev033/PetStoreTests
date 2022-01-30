@@ -6,8 +6,8 @@ import java.util.*
 @JsonIgnoreProperties(value = ["id"], allowSetters = true)
 data class PetPojo (
 	val id: Int = 0,
-	val category: Category? = null,
 	val name: String = "",
+	val category: Category? = null,
 	val photoUrls: List<String> = Collections.emptyList(),
 	val tags: List<TagsItem> = Collections.emptyList(),
 	val status: String = ""

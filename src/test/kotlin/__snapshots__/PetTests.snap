@@ -1,10 +1,10 @@
 PetTests.getPetByValidId=[
   {
+    "name": "Cat 1",
     "category": {
       "id": 2,
       "name": "Cats"
     },
-    "name": "Cat 1",
     "photoUrls": [
       "url1",
       "url2"
@@ -20,5 +20,44 @@ PetTests.getPetByValidId=[
       }
     ],
     "status": "available"
+  }
+]
+
+
+PetTests.postValidPet[John]=[
+  {
+    "name": "John",
+    "category": {
+      "id": 1,
+      "name": "Fish"
+    },
+    "photoUrls": [
+      "url1,url2"
+    ],
+    "tags": [
+      {
+        "id": 1,
+        "name": "TestTag1"
+      },
+      {
+        "id": 2,
+        "name": "TestTag2"
+      }
+    ],
+    "status": "available"
+  }
+]
+
+
+PetTests.postValidPet[Mike]=[
+  {
+    "name": "Mike",
+    "category": {
+      "id": 3,
+      "name": "Dog"
+    },
+    "photoUrls": [ ],
+    "tags": [ ],
+    "status": "sold"
   }
 ]

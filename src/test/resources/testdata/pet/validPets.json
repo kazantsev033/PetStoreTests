@@ -1,0 +1,35 @@
+[
+  {
+    "id": 11,
+    "name": "John",
+    "category": {
+      "id": 1,
+      "name": "Fish"
+    },
+    "photoUrls": [
+      "url1,url2"
+    ],
+    "tags": [
+      {
+        "id": 1,
+        "name": "TestTag1"
+      },
+      {
+        "id": 2,
+        "name": "TestTag2"
+      }
+    ],
+    "status": "available"
+  },
+  {
+    "id": 12,
+    "name": "Mike",
+    "category": {
+      "id": 3,
+      "name": "Dog"
+    },
+    "photoUrls": [],
+    "tags": [],
+    "status": "sold"
+  }
+]
