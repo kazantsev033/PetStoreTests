@@ -31,12 +31,6 @@ dependencies {
     testImplementation 'io.github.origin-energy:java-snapshot-testing-core:3.2.6'
     testImplementation 'io.github.origin-energy:java-snapshot-testing-junit5:3.2.6'
     testImplementation 'io.github.origin-energy:java-snapshot-testing-plugin-jackson:3.2.6'
-
-    implementation 'com.karumi.kotlinsnapshot:core:2.2.3'
-
-    implementation 'com.google.code.gson:gson:2.8.9'
-
-    implementation 'org.json:json:20211205'
 }
 
 test {
