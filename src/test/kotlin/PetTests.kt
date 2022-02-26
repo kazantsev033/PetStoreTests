@@ -10,7 +10,7 @@ import models.PetPojo
 import services.PetService
 
 @ExtendWith(SnapshotExtension::class)
-class PetTests: AbstractTests() {
+class PetTests: AbstractTest() {
     private val petService = PetService(baseUrl)
     private lateinit var expect: Expect
 

@@ -8,10 +8,18 @@ class PetService(baseUrl: String) : RestService(baseUrl) {
     override val basePath: String = "pet"
 
     fun getPetById(id:String):Response{
-        return given().spec(requestSpecification).pathParam("petId",id).get("$basePath/{petId}")
+        return given()
+                .spec(requestSpecification)
+                .pathParam("petId",id)
+            .`when`()
+                .get("$basePath/{petId}")
     }
 
     fun postPet(petPojo: JsonObject):Response{
-        return  given().spec(requestSpecification).body(petPojo.toString()).post(basePath)
+        return  given()
+                .spec(requestSpecification)
+                .body(petPojo.toString())
+            .`when`()
+                .post(basePath)
     }
 }

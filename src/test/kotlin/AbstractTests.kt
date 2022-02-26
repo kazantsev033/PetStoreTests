@@ -3,7 +3,7 @@ import org.testcontainers.containers.wait.strategy.Wait
 import org.testcontainers.junit.jupiter.Container
 import org.testcontainers.utility.DockerImageName
 
-abstract class AbstractTests {
+abstract class AbstractTest {
     companion object {
         @Container
         val petStore: GenericContainer<*>? = GenericContainer(DockerImageName.parse("swaggerapi/petstore3"))
