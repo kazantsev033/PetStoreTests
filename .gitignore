@@ -85,5 +85,5 @@ fabric.properties
 
 # Swagger
 swagger-coverage-output/
-swagger-coverage-commandline-1.4.4/swagger-coverage-report.html
-swagger-coverage-commandline-1.4.4/swagger-coverage-results.json
+swagger-coverage-commandline/swagger-coverage-report.html
+swagger-coverage-commandline/swagger-coverage-results.json

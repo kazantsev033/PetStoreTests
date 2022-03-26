@@ -12,10 +12,10 @@ repositories {
 }
 
 allure {
-    version = '2.17.3'  // Latest Allure Version
+    version = '2.17.3'
 
     useJUnit5 {
-        version = '2.17.3' // Latest Allure Version
+        version = '2.17.3'
     }
 
 }
