@@ -1,13 +1,16 @@
 import au.com.origin.snapshots.Expect
 import au.com.origin.snapshots.junit5.SnapshotExtension
+import io.qameta.allure.Allure.step
+import models.PetPojo
+import net.joshka.junit.json.params.JsonFileSource
 import org.hamcrest.Matchers.containsString
+import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.junit.jupiter.params.ParameterizedTest
-import net.joshka.junit.json.params.JsonFileSource
-import javax.json.JsonObject
-import models.PetPojo
 import services.PetService
+import javax.json.JsonObject
 
 @ExtendWith(SnapshotExtension::class)
 class PetTests: AbstractTest() {
@@ -36,12 +39,19 @@ class PetTests: AbstractTest() {
         response.then().statusCode(400)
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "{index}")
     @JsonFileSource(resources = ["testdata/pet/validPets.json"])
-    fun postValidPet(json:JsonObject){
-        petService.postPet(json).then().statusCode(200)
-        val responsePet = petService.getPetById(json["id"].toString()).`as`(PetPojo::class.java)
+    @DisplayName("Добавление питомца")
+    fun postValidPet(json: JsonObject) {
+        lateinit var responsePet:PetPojo
 
-        expect.serializer("json").scenario(responsePet.name).toMatchSnapshot(responsePet)
+        step("Добавить питомца") { ->
+            petService.postPet(json).then().statusCode(200)
+        }
+
+        step("Питомец добавлен") { ->
+            responsePet = petService.getPetById(json["id"].toString()).`as`(PetPojo::class.java)
+            expect.serializer("json").scenario(responsePet.name).toMatchSnapshot(responsePet)
+        }
     }
 }
